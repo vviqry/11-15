@@ -1,0 +1,1876 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Kuis English Speaking Class Book 1 (Ch. 11–15)</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      -webkit-tap-highlight-color: transparent;
+    }
+    /* Smooth micro-animations */
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      20% { transform: translateX(-5px); }
+      40% { transform: translateX(5px); }
+      60% { transform: translateX(-4px); }
+      80% { transform: translateX(4px); }
+    }
+    .animate-fade-up {
+      animation: fadeSlideUp 0.25s ease-out forwards;
+    }
+    .animate-shake {
+      animation: shake 0.35s ease-in-out;
+    }
+    /* Custom thin scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
+      height: 5px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="bg-slate-200 text-slate-800 antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+  <!-- Mobile-First App Container (Full width on phones, max 500px centered on larger screens) -->
+  <div id="app" class="max-w-[500px] mx-auto min-h-[100dvh] bg-slate-50 shadow-2xl flex flex-col relative overflow-x-hidden">
+
+    <!-- ==================== HOME / START SCREEN ==================== -->
+    <section id="homeView" class="flex-1 flex flex-col p-5 pb-8 animate-fade-up">
+      <!-- Hero Banner -->
+      <div class="bg-gradient-to-br from-indigo-600 via-indigo-700 to-violet-700 rounded-3xl p-6 text-white shadow-lg shadow-indigo-200 mb-5 relative overflow-hidden">
+        <div class="absolute -right-6 -top-6 w-28 h-28 bg-white/10 rounded-full blur-xl"></div>
+        <div class="absolute -left-6 -bottom-8 w-32 h-32 bg-violet-400/20 rounded-full blur-xl"></div>
+        <div class="relative z-10">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/15 backdrop-blur-sm text-xs font-semibold tracking-wide mb-3">
+            📘 English Speaking Class • Book 1
+          </span>
+          <h1 class="text-2xl font-extrabold leading-tight mb-1.5">Latihan Soal Ch. 11–15</h1>
+          <p class="text-indigo-100 text-sm leading-relaxed">
+            50 soal interaktif (Pilihan Ganda &amp; Pilihan Ganda Kompleks) dengan fitur <strong>Auto-Koreksi Pintar</strong> tanpa membocorkan jawaban.
+          </p>
+        </div>
+      </div>
+
+      <!-- Saved Progress Summary Card -->
+      <div class="bg-white rounded-2xl p-4 border border-slate-200/80 shadow-sm mb-5">
+        <div class="flex items-center justify-between mb-2.5">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500">Progres Tersimpan</span>
+          <span id="homeProgressPct" class="text-xs font-bold text-indigo-600 bg-indigo-50 px-2.5 py-0.5 rounded-full">0% Selesai</span>
+        </div>
+        <div class="w-full h-2.5 bg-slate-100 rounded-full overflow-hidden mb-3">
+          <div id="homeProgressBar" class="h-full bg-indigo-600 rounded-full transition-all duration-500" style="width: 0%"></div>
+        </div>
+        <div class="grid grid-cols-3 gap-2 text-center">
+          <div class="bg-emerald-50/80 rounded-xl p-2 border border-emerald-100">
+            <div id="homeStatFirst" class="text-lg font-extrabold text-emerald-700">0</div>
+            <div class="text-[11px] font-medium text-emerald-600 leading-tight">Benar 1x Coba</div>
+          </div>
+          <div class="bg-sky-50/80 rounded-xl p-2 border border-sky-100">
+            <div id="homeStatCorrected" class="text-lg font-extrabold text-sky-700">0</div>
+            <div class="text-[11px] font-medium text-sky-600 leading-tight">Setelah Koreksi</div>
+          </div>
+          <div class="bg-slate-50 rounded-xl p-2 border border-slate-200/70">
+            <div id="homeStatRemaining" class="text-lg font-extrabold text-slate-700">50</div>
+            <div class="text-[11px] font-medium text-slate-500 leading-tight">Belum Dijawab</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Filter Selection -->
+      <div class="mb-5">
+        <h2 class="text-sm font-bold text-slate-700 mb-2.5 flex items-center gap-1.5">
+          <span>🎯</span> Pilih Mode Latihan
+        </h2>
+        <div id="filterGrid" class="grid grid-cols-2 gap-2.5">
+          <button data-filter="all" class="filter-btn col-span-2 text-left p-3.5 rounded-2xl border-2 border-indigo-600 bg-indigo-50/70 transition-all active:scale-[0.99]">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="font-bold text-sm text-indigo-950">Semua Materi (Ch. 11–15)</div>
+                <div class="text-xs text-indigo-700/80 mt-0.5">35 Pilihan Ganda + 15 PG Kompleks</div>
+              </div>
+              <span class="text-xs font-extrabold bg-indigo-600 text-white px-2.5 py-1 rounded-full">50 Soal</span>
+            </div>
+          </button>
+
+          <button data-filter="ch11" class="filter-btn text-left p-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-indigo-300 transition-all active:scale-[0.98]">
+            <div class="text-[11px] font-bold text-indigo-600">Chapter 11 • 10 Soal</div>
+            <div class="font-bold text-xs text-slate-800 mt-0.5 line-clamp-1">Present Continuous</div>
+          </button>
+
+          <button data-filter="ch12" class="filter-btn text-left p-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-indigo-300 transition-all active:scale-[0.98]">
+            <div class="text-[11px] font-bold text-indigo-600">Chapter 12 • 10 Soal</div>
+            <div class="font-bold text-xs text-slate-800 mt-0.5 line-clamp-1">Object Pronouns</div>
+          </button>
+
+          <button data-filter="ch13" class="filter-btn text-left p-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-indigo-300 transition-all active:scale-[0.98]">
+            <div class="text-[11px] font-bold text-indigo-600">Chapter 13 • 10 Soal</div>
+            <div class="font-bold text-xs text-slate-800 mt-0.5 line-clamp-1">Time &amp; Schedules</div>
+          </button>
+
+          <button data-filter="ch14" class="filter-btn text-left p-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-indigo-300 transition-all active:scale-[0.98]">
+            <div class="text-[11px] font-bold text-indigo-600">Chapter 14 • 10 Soal</div>
+            <div class="font-bold text-xs text-slate-800 mt-0.5 line-clamp-1">Making Plans</div>
+          </button>
+
+          <button data-filter="ch15" class="filter-btn text-left p-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-indigo-300 transition-all active:scale-[0.98]">
+            <div class="text-[11px] font-bold text-indigo-600">Chapter 15 • 10 Soal</div>
+            <div class="font-bold text-xs text-slate-800 mt-0.5 line-clamp-1">Likes &amp; Preferences</div>
+          </button>
+
+          <button data-filter="pg" class="filter-btn text-left p-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-indigo-300 transition-all active:scale-[0.98]">
+            <div class="text-[11px] font-bold text-emerald-600">Tipe Soal • 35 Soal</div>
+            <div class="font-bold text-xs text-slate-800 mt-0.5">Pilihan Ganda (PG)</div>
+          </button>
+
+          <button data-filter="pgk" class="filter-btn col-span-2 text-left p-3 rounded-2xl border-2 border-slate-200 bg-white hover:border-indigo-300 transition-all active:scale-[0.98]">
+            <div class="flex items-center justify-between">
+              <div>
+                <div class="text-[11px] font-bold text-violet-600">Tipe Soal • 15 Soal</div>
+                <div class="font-bold text-xs text-slate-800 mt-0.5">Pilihan Ganda Kompleks (Multi-Pilih)</div>
+              </div>
+              <span class="text-[11px] font-semibold text-violet-700 bg-violet-50 px-2.5 py-1 rounded-full">Pilih &gt;1</span>
+            </div>
+          </button>
+        </div>
+      </div>
+
+      <!-- Primary Start CTA & Reset -->
+      <div class="mt-auto space-y-2.5">
+        <button id="startQuizBtn" class="w-full py-4 px-6 rounded-2xl bg-indigo-600 hover:bg-indigo-700 active:scale-[0.99] text-white font-bold text-base shadow-lg shadow-indigo-200 transition-all flex items-center justify-center gap-2">
+          <span id="startQuizLabel">Mulai Latihan</span>
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>
+        </button>
+
+        <div class="flex gap-2">
+          <button id="viewResultsFromHomeBtn" class="hidden flex-1 py-3 px-4 rounded-2xl bg-white border border-slate-200 text-slate-700 font-semibold text-sm hover:bg-slate-50 active:scale-[0.98] transition-all">
+            📊 Lihat Evaluasi
+          </button>
+          <button id="resetProgressHomeBtn" class="flex-1 py-3 px-4 rounded-2xl bg-white border border-rose-200 text-rose-600 font-semibold text-sm hover:bg-rose-50 active:scale-[0.98] transition-all">
+            🔄 Reset Progres
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== QUIZ SCREEN ==================== -->
+    <section id="quizView" class="hidden flex-1 flex flex-col min-h-[100dvh]">
+      <!-- Sticky Top Header -->
+      <header class="sticky top-0 z-30 bg-white/95 backdrop-blur-md border-b border-slate-200/80">
+        <div class="px-4 py-3 flex items-center justify-between gap-2">
+          <!-- Back to Home + Chapter Badge -->
+          <div class="flex items-center gap-2 min-w-0">
+            <button id="backHomeBtn" aria-label="Kembali ke Menu" class="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 active:scale-95 flex items-center justify-center text-slate-600 shrink-0 transition">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+            </button>
+            <div class="min-w-0">
+              <span id="chapterBadge" class="inline-block text-[11px] font-bold text-indigo-700 bg-indigo-50 px-2.5 py-0.5 rounded-full truncate max-w-[155px]">Ch. 11</span>
+              <div id="progressText" class="text-xs font-extrabold text-slate-800 mt-0.5">Soal 1 / 50</div>
+            </div>
+          </div>
+
+          <!-- Score Pill + Question List Drawer Trigger -->
+          <div class="flex items-center gap-2 shrink-0">
+            <div id="accuracyPill" class="px-2.5 py-1.5 rounded-xl bg-emerald-50 border border-emerald-200/70 text-emerald-700 text-xs font-bold flex items-center gap-1">
+              <span>✓</span> <span id="headerSolvedCount">0</span>/<span id="headerTotalCount">50</span>
+            </div>
+            <button id="openDrawerBtn" class="px-3 py-1.5 rounded-xl bg-slate-800 hover:bg-slate-900 active:scale-95 text-white text-xs font-bold flex items-center gap-1.5 transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"/></svg>
+              <span>Daftar</span>
+            </button>
+          </div>
+        </div>
+        <!-- Thin Progress Bar -->
+        <div class="w-full h-1.5 bg-slate-100">
+          <div id="quizProgressBar" class="h-full bg-gradient-to-r from-indigo-500 to-violet-500 transition-all duration-300" style="width: 2%"></div>
+        </div>
+      </header>
+
+      <!-- Main Scrollable Question Area -->
+      <main id="quizScrollArea" class="flex-1 overflow-y-auto px-4 pt-4 pb-28">
+        <!-- Question Card -->
+        <div id="questionCard" class="bg-white rounded-3xl p-5 border border-slate-200/80 shadow-sm mb-4 animate-fade-up">
+          <!-- Meta Row -->
+          <div class="flex flex-wrap items-center justify-between gap-2 mb-3">
+            <span id="typeBadge" class="inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700">
+              Pilihan Ganda
+            </span>
+            <span id="attemptBadge" class="text-[11px] font-semibold text-slate-400">
+              No. 1
+            </span>
+          </div>
+
+          <!-- Topic Subtitle -->
+          <div id="topicSubtitle" class="text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-1.5">
+            Present Continuous Tense
+          </div>
+
+          <!-- Question Text -->
+          <h2 id="questionText" class="text-[17px] font-bold text-slate-900 leading-snug">
+            Memuat soal...
+          </h2>
+
+          <!-- PGK Helper Note -->
+          <p id="pgkHelperNote" class="hidden mt-2 text-xs text-violet-700 bg-violet-50 border border-violet-100 rounded-xl px-3 py-2 font-medium">
+            💡 Pilih <strong>lebih dari satu</strong> jawaban yang benar (bisa 2 atau 3 pilihan).
+          </p>
+        </div>
+
+        <!-- Options List -->
+        <div id="optionsContainer" class="space-y-2.5 mb-4">
+          <!-- Dynamically injected option buttons -->
+        </div>
+
+        <!-- Feedback / Auto-Correction Box -->
+        <div id="feedbackBox" class="hidden rounded-3xl p-4 border-2 mb-4 animate-fade-up">
+          <!-- Dynamically filled for Correct or Auto-Correction -->
+        </div>
+      </main>
+
+      <!-- Sticky Bottom Action Bar (Thumb Zone) -->
+      <footer class="fixed bottom-0 left-1/2 -translate-x-1/2 w-full max-w-[500px] z-30 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-3">
+        <div class="flex items-center gap-2.5">
+          <!-- Prev Button -->
+          <button id="prevBtn" aria-label="Soal Sebelumnya" class="w-12 h-12 rounded-2xl bg-slate-100 hover:bg-slate-200 active:scale-95 disabled:opacity-40 flex items-center justify-center text-slate-700 shrink-0 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+
+          <!-- Primary Action Button -->
+          <button id="primaryActionBtn" class="flex-1 h-12 rounded-2xl bg-indigo-600 hover:bg-indigo-700 active:scale-[0.98] disabled:bg-slate-300 disabled:text-slate-500 text-white font-bold text-sm shadow-md shadow-indigo-200/70 transition flex items-center justify-center gap-2">
+            Periksa Jawaban
+          </button>
+
+          <!-- Next / Skip Button -->
+          <button id="nextBtn" aria-label="Lewati / Soal Berikutnya" class="w-12 h-12 rounded-2xl bg-slate-100 hover:bg-slate-200 active:scale-95 disabled:opacity-40 flex items-center justify-center text-slate-700 shrink-0 transition">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
+      </footer>
+    </section>
+
+    <!-- ==================== RESULTS & EVALUATION SCREEN ==================== -->
+    <section id="resultsView" class="hidden flex-1 flex flex-col p-5 pb-8 animate-fade-up">
+      <div class="bg-gradient-to-br from-indigo-600 to-violet-700 rounded-3xl p-6 text-white text-center shadow-lg shadow-indigo-200 mb-5">
+        <div class="text-4xl mb-2" id="resultEmoji">🏆</div>
+        <h2 class="text-xl font-extrabold">Hasil &amp; Evaluasi</h2>
+        <p id="resultSubtitle" class="text-indigo-100 text-xs mt-1">Ringkasan latihan Book 1 (Ch. 11–15)</p>
+        <div class="mt-4 inline-flex items-baseline gap-1 bg-white/15 backdrop-blur-sm px-5 py-2.5 rounded-2xl">
+          <span id="resultMainScore" class="text-3xl font-extrabold">0%</span>
+          <span class="text-xs text-indigo-100 font-semibold">Akurasi 1x Coba</span>
+        </div>
+      </div>
+
+      <!-- 3 Stat Pills -->
+      <div class="grid grid-cols-3 gap-2.5 mb-5 text-center">
+        <div class="bg-white rounded-2xl p-3 border border-emerald-200 shadow-sm">
+          <div id="resFirstTry" class="text-2xl font-extrabold text-emerald-600">0</div>
+          <div class="text-[11px] font-semibold text-slate-500 mt-0.5 leading-tight">Benar 1x Coba</div>
+        </div>
+        <div class="bg-white rounded-2xl p-3 border border-sky-200 shadow-sm">
+          <div id="resCorrected" class="text-2xl font-extrabold text-sky-600">0</div>
+          <div class="text-[11px] font-semibold text-slate-500 mt-0.5 leading-tight">Benar via Koreksi</div>
+        </div>
+        <div class="bg-white rounded-2xl p-3 border border-slate-200 shadow-sm">
+          <div id="resUnfinished" class="text-2xl font-extrabold text-slate-500">0</div>
+          <div class="text-[11px] font-semibold text-slate-500 mt-0.5 leading-tight">Belum Selesai</div>
+        </div>
+      </div>
+
+      <!-- Breakdown per Chapter -->
+      <div class="bg-white rounded-3xl p-4 border border-slate-200/80 shadow-sm mb-5">
+        <h3 class="text-sm font-bold text-slate-800 mb-3">Rincian per Chapter</h3>
+        <div id="chapterBreakdownList" class="space-y-3">
+          <!-- Injected via JS -->
+        </div>
+      </div>
+
+      <!-- Action Buttons -->
+      <div class="mt-auto space-y-2.5">
+        <button id="retryMissedBtn" class="hidden w-full py-3.5 px-5 rounded-2xl bg-amber-500 hover:bg-amber-600 active:scale-[0.99] text-white font-bold text-sm shadow-md shadow-amber-200 transition">
+          🔁 Ulangi Soal yang Pernah Salah
+        </button>
+        <button id="backToMenuFromResBtn" class="w-full py-3.5 px-5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 active:scale-[0.99] text-white font-bold text-sm shadow-md shadow-indigo-200 transition">
+          🏠 Kembali ke Menu Utama
+        </button>
+        <button id="restartAllFromResBtn" class="w-full py-3 px-5 rounded-2xl bg-white border border-rose-200 text-rose-600 font-semibold text-sm hover:bg-rose-50 active:scale-[0.99] transition">
+          🔄 Reset &amp; Mulai dari Awal
+        </button>
+      </div>
+    </section>
+
+    <!-- ==================== QUESTION GRID DRAWER MODAL ==================== -->
+    <div id="drawerModal" class="hidden fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-slate-900/50 backdrop-blur-xs">
+      <div class="w-full max-w-[500px] max-h-[82dvh] bg-white rounded-t-3xl sm:rounded-3xl flex flex-col shadow-2xl animate-fade-up">
+        <!-- Drawer Header -->
+        <div class="px-5 py-4 border-b border-slate-100 flex items-center justify-between">
+          <div>
+            <h3 class="font-extrabold text-base text-slate-900">Daftar Soal</h3>
+            <p id="drawerSubtitle" class="text-xs text-slate-500">Ketuk nomor untuk lompat ke soal</p>
+          </div>
+          <button id="closeDrawerBtn" class="w-9 h-9 rounded-full bg-slate-100 hover:bg-slate-200 flex items-center justify-center text-slate-600 font-bold">
+            ✕
+          </button>
+        </div>
+
+        <!-- Legend -->
+        <div class="px-5 py-2.5 bg-slate-50 border-b border-slate-100 flex flex-wrap gap-x-3 gap-y-1.5 text-[11px] font-semibold text-slate-600">
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-emerald-500 inline-block"></span>Benar 1x</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-sky-500 inline-block"></span>Via Koreksi</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-amber-400 inline-block"></span>Perlu Koreksi</span>
+          <span class="flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-slate-200 inline-block"></span>Belum</span>
+        </div>
+
+        <!-- Grid -->
+        <div id="drawerGrid" class="p-4 overflow-y-auto grid grid-cols-5 gap-2.5">
+          <!-- Injected buttons -->
+        </div>
+
+        <!-- Drawer Footer -->
+        <div class="p-4 border-t border-slate-100">
+          <button id="finishEarlyBtn" class="w-full py-3 rounded-2xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 font-bold text-sm transition">
+            📊 Lihat Hasil &amp; Evaluasi Sekarang
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ==================== CUSTOM CONFIRMATION MODAL (No window.confirm) ==================== -->
+    <div id="confirmModal" class="hidden fixed inset-0 z-50 flex items-center justify-center p-5 bg-slate-900/50 backdrop-blur-xs">
+      <div class="w-full max-w-[360px] bg-white rounded-3xl p-6 shadow-2xl animate-fade-up">
+        <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center text-2xl mb-3 mx-auto">
+          🔄
+        </div>
+        <h3 class="text-lg font-extrabold text-slate-900 text-center">Reset Semua Progres?</h3>
+        <p class="text-xs text-slate-500 text-center mt-1.5 leading-relaxed">
+          Semua jawaban tersimpan dan catatan percobaan untuk 50 soal akan dihapus agar kamu bisa berlatih dari awal.
+        </p>
+        <div class="grid grid-cols-2 gap-2.5 mt-5">
+          <button id="cancelResetBtn" class="py-3 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold text-sm transition">
+            Batal
+          </button>
+          <button id="confirmResetBtn" class="py-3 rounded-2xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-sm transition">
+            Ya, Reset
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ==================== JAVASCRIPT APPLICATION LOGIC ==================== -->
+  <script>
+    /**
+     * ALL 50 COMPLETE QUESTIONS — English Speaking Class Book 1 (Chapters 11–15)
+     * 35 Pilihan Ganda (type: 'pg') + 15 Pilihan Ganda Kompleks (type: 'pgk')
+     *
+     * CRITICAL ANTI-SPOILER DESIGN:
+     * - For PG: `optionHints` explains the specific flaw in each wrong choice WITHOUT naming the correct option.
+     * - For PGK: `wrongHints` explains the specific flaw of each wrong choice if checked.
+     * - `ruleGuide`: explains "bagaimana seharusnya" using the grammar formula from Book 1 without leaking the answer.
+     * - `successExplanation`: shown ONLY AFTER the user answers correctly.
+     */
+    const CHAPTER_META = {
+      11: { title: "Chapter 11", topic: "What's Happening Around You? (Present Continuous)" },
+      12: { title: "Chapter 12", topic: "People Around Me (Object Pronouns)" },
+      13: { title: "Chapter 13", topic: "Talking About Time & Schedules" },
+      14: { title: "Chapter 14", topic: "Making Plans with Friends" },
+      15: { title: "Chapter 15", topic: "Likes, Dislikes & Preferences" }
+    };
+
+    const QUESTIONS = [
+      // ==================== CHAPTER 11 (Q1–Q10) ====================
+      {
+        id: 1, chapter: 11, type: "pg",
+        question: "Look! The chef ______ dinner in the kitchen right now.",
+        options: { A: "prepare", B: "is preparing", C: "prepares", D: "are preparing" },
+        correct: ["B"],
+        optionHints: {
+          A: "Kata kerja dasar tanpa kata bantu 'be' dan tanpa akhiran '-ing' tidak bisa dipakai untuk aktivitas yang sedang berlangsung sekarang.",
+          C: "Bentuk ini adalah Simple Present (untuk kebiasaan/rutinitas), padahal ada penanda waktu 'Look!' dan 'right now'.",
+          D: "Kata bantu 'are' digunakan untuk subjek jamak (lebih dari satu), sedangkan 'The chef' adalah subjek tunggal."
+        },
+        ruleGuide: "Gunakan pola Present Continuous: Subject + am/is/are + verb-ing. Perhatikan apakah subjeknya tunggal (he/she/it) atau jamak.",
+        successExplanation: "Benar! 'The chef' adalah subjek tunggal dan 'Look! ... right now' menunjukkan aksi sedang terjadi sekarang, sehingga menggunakan 'is preparing'."
+      },
+      {
+        id: 2, chapter: 11, type: "pg",
+        question: "Which sentence uses the correct -ing spelling rule?",
+        options: {
+          A: "She is writeing a note.",
+          B: "He is sittting near the window.",
+          C: "They are making a cake.",
+          D: "We are runing to the lobby."
+        },
+        correct: ["C"],
+        optionHints: {
+          A: "Kata kerja berakhiran huruf '-e' yang tidak dibaca seharusnya menghilangkan huruf 'e' dulu sebelum ditambah '-ing'.",
+          B: "Kata kerja pendek berpola konsonan-vokal-konsonan cukup menggandakan (2x) huruf konsonan terakhir, bukan menjadi tiga huruf (3x).",
+          D: "Kata kerja pendek berpola konsonan-vokal-konsonan (CVC) wajib menggandakan huruf konsonan terakhir sebelum ditambah '-ing'."
+        },
+        ruleGuide: "Ingat 2 aturan ejaan '-ing' di Chapter 11: (1) Akhiran '-e' dibuang lalu + '-ing'; (2) Kata pendek pola CVC menggandakan konsonan terakhir (cukup 2 huruf, bukan 3).",
+        successExplanation: "Tepat! 'make' berakhiran '-e', sehingga huruf 'e' dihilangkan menjadi 'making'."
+      },
+      {
+        id: 3, chapter: 11, type: "pg",
+        question: "I usually ______ coffee in the morning, but today I ______ tea.",
+        options: {
+          A: "drink / am drinking",
+          B: "am drinking / drink",
+          C: "drinks / is drinking",
+          D: "drinking / drink"
+        },
+        correct: ["A"],
+        optionHints: {
+          B: "Urutannya terbalik! Bagian pertama punya kata 'usually' (rutinitas), sedangkan bagian kedua punya 'today' (sedang terjadi saat ini).",
+          C: "Subjeknya adalah 'I'. Kata kerja untuk 'I' di Simple Present tidak ditambah '-s', dan 'be' untuk 'I' bukan 'is'.",
+          D: "Kata kerja '-ing' tidak bisa berdiri sendiri tanpa 'be', dan kata 'usually' menandakan rutinitas (Simple Present)."
+        },
+        ruleGuide: "Bedakan Simple Present (untuk kebiasaan seperti 'usually') dan Present Continuous (untuk aksi sementara hari ini seperti 'today'), lalu sesuaikan dengan subjek 'I'.",
+        successExplanation: "Bagus! 'usually' memakai Simple Present ('drink'), dan 'today' memakai Present Continuous ('am drinking')."
+      },
+      {
+        id: 4, chapter: 11, type: "pg",
+        question: "Supervisor: '______ anyone cleaning the kitchen right now?' Staff: 'Yes, Ali is.'",
+        options: { A: "Are", B: "Do", C: "Is", D: "Does" },
+        correct: ["C"],
+        optionHints: {
+          A: "Kata ganti 'anyone' dalam grammar bahasa Inggris selalu dianggap subjek tunggal, sehingga tidak cocok dengan 'Are'.",
+          B: "'Do' digunakan untuk pertanyaan Simple Present dengan kata kerja dasar, bukan dengan verb-ing ('cleaning').",
+          D: "'Does' digunakan untuk Simple Present, bukan untuk kalimat Present Continuous yang memakai verb-ing."
+        },
+        ruleGuide: "Pertanyaan Yes/No pada Present Continuous memakai 'Am / Is / Are + subject + verb-ing?'. Ingat bahwa 'anyone' dianggap subjek tunggal.",
+        successExplanation: "Benar! 'anyone' dianggap tunggal dan kalimatnya memakai 'cleaning' (Present Continuous), jadi kata bantu yang tepat adalah 'Is'."
+      },
+      {
+        id: 5, chapter: 11, type: "pg",
+        question: "Choose the grammatically correct negative sentence in Present Continuous.",
+        options: {
+          A: "They isn't talking.",
+          B: "She not working today.",
+          C: "He aren't cooking.",
+          D: "They aren't talking."
+        },
+        correct: ["D"],
+        optionHints: {
+          A: "Subjek 'They' adalah jamak, jadi tidak boleh dipasangkan dengan 'isn't' (untuk tunggal).",
+          B: "Kalimat ini kehilangan kata bantu 'be' (am/is/are) sebelum kata 'not + verb-ing'.",
+          C: "Subjek 'He' adalah tunggal, jadi tidak boleh dipasangkan dengan 'aren't' (untuk jamak)."
+        },
+        ruleGuide: "Pola negatif Present Continuous: Subject + am/is/are + not + verb-ing. Pastikan 'be' selalu ada dan cocok dengan subjeknya.",
+        successExplanation: "Tepat! 'They' adalah jamak sehingga berpasangan dengan 'aren't' + 'talking'."
+      },
+      {
+        id: 6, chapter: 11, type: "pg",
+        question: "Look at the picture! A waiter ______ a tray to Table 5.",
+        options: { A: "carrying", B: "is carrying", C: "are carrying", D: "carries" },
+        correct: ["B"],
+        optionHints: {
+          A: "Verb-ing tidak boleh berdiri sendiri tanpa kata bantu 'be' (am/is/are) di depannya.",
+          C: "'A waiter' hanya satu orang (tunggal), sehingga tidak cocok memakai 'are'.",
+          D: "Bentuk Simple Present dipakai untuk rutinitas, bukan untuk mendeskripsikan aksi yang sedang terjadi pada gambar ('Look at the picture!')."
+        },
+        ruleGuide: "Untuk mendeskripsikan aksi yang terlihat sedang terjadi di gambar, gunakan Present Continuous (am/is/are + verb-ing) sesuai jumlah subjeknya.",
+        successExplanation: "Benar! 'A waiter' adalah subjek tunggal, maka bentuk Present Continuous yang tepat adalah 'is carrying'."
+      },
+      {
+        id: 7, chapter: 11, type: "pg",
+        question: "Guest: 'What is the receptionist doing?' Staff: 'She ______ a reservation.'",
+        options: { A: "checks", B: "is checking", C: "checking", D: "are checking" },
+        correct: ["B"],
+        optionHints: {
+          A: "Pertanyaannya menanyakan apa yang sedang dilakukan sekarang ('What is ... doing?'), bukan kebiasaan sehari-hari.",
+          C: "Dalam kalimat Present Continuous, kata bantu 'be' (am/is/are) wajib ditulis sebelum verb-ing.",
+          D: "Subjek 'She' adalah tunggal, sehingga tidak boleh menggunakan 'are'."
+        },
+        ruleGuide: "Jawab pertanyaan 'What is she doing?' menggunakan pola Present Continuous: Subject + be (untuk 'She') + verb-ing.",
+        successExplanation: "Tepat sekali! Subjek 'She' berpasangan dengan 'is' + 'checking'."
+      },
+      {
+        id: 8, chapter: 11, type: "pgk",
+        question: "Select ALL sentences that correctly use the Present Continuous Tense.",
+        options: {
+          A: "The guests are waiting in the lobby.",
+          B: "She is practice English now.",
+          C: "I'm studying Present Continuous.",
+          D: "Two cooks is chopping vegetables."
+        },
+        correct: ["A", "C"],
+        wrongHints: {
+          B: "Ada pilihan yang sudah memakai 'is', tetapi kata kerjanya lupa diberi akhiran '-ing'.",
+          D: "Ada pilihan dengan subjek jamak ('Two cooks'), tetapi memakai kata bantu tunggal ('is')."
+        },
+        ruleGuide: "Pastikan setiap kalimat yang kamu pilih memiliki subjek yang cocok dengan am/is/are (termasuk bentuk singkat seperti I'm) DAN diikuti verb-ing.",
+        successExplanation: "Mantap! 'The guests are waiting...' dan 'I'm studying...' sama-sama memenuhi pola Subject + be + verb-ing dengan benar."
+      },
+      {
+        id: 9, chapter: 11, type: "pgk",
+        question: "Select ALL verbs that must DOUBLE the final consonant before adding -ing.",
+        options: { A: "sit", B: "read", C: "run", D: "swim" },
+        correct: ["A", "C", "D"],
+        wrongHints: {
+          B: "Kata 'read' memiliki DUA huruf vokal (e dan a) sebelum konsonan terakhir, jadi tidak menggandakan huruf akhirnya."
+        },
+        ruleGuide: "Cari kata kerja pendek yang 3 huruf terakhirnya berpola Konsonan–Vokal–Konsonan (CVC) dengan SATU huruf vokal saja.",
+        successExplanation: "Benar! 'sit' (sitting), 'run' (running), dan 'swim' (swimming) semuanya berpola CVC pendek sehingga konsonan terakhirnya digandakan."
+      },
+      {
+        id: 10, chapter: 11, type: "pgk",
+        question: "Select ALL sentences that describe a ROUTINE/HABIT (Simple Present), NOT an action happening right now.",
+        options: {
+          A: "She works in a hotel every day.",
+          B: "Look! The chef is frying chicken.",
+          C: "They practice English every Monday.",
+          D: "We are preparing for lunch service now."
+        },
+        correct: ["A", "C"],
+        wrongHints: {
+          B: "Kalimat dengan 'Look!' dan 'is + verb-ing' menjelaskan aksi yang sedang terjadi sekarang (Present Continuous), bukan rutinitas.",
+          D: "Kalimat dengan 'are + verb-ing' dan 'now' menjelaskan aksi saat ini, bukan kebiasaan."
+        },
+        ruleGuide: "Fokus mencari kalimat yang memakai Simple Present (verb 1 / verb+s) dan penanda waktu kebiasaan seperti 'every day' atau 'every Monday'.",
+        successExplanation: "Tepat! Kedua kalimat tersebut memakai Simple Present dengan penanda rutinitas ('every day' dan 'every Monday')."
+      },
+
+      // ==================== CHAPTER 12 (Q11–Q20) ====================
+      {
+        id: 11, chapter: 12, type: "pg",
+        question: "My English teacher is very supportive. She always helps ______.",
+        options: { A: "I", B: "my", C: "me", D: "we" },
+        correct: ["C"],
+        optionHints: {
+          A: "'I' adalah Subject Pronoun (pelaku di depan kata kerja), bukan penerima aksi setelah kata kerja 'helps'.",
+          B: "'my' adalah Possessive Adjective (kepemilikan) yang harus diikuti kata benda, tidak bisa berdiri sendiri sebagai objek.",
+          D: "'we' adalah Subject Pronoun (pelaku), tidak boleh diletakkan setelah kata kerja 'helps'."
+        },
+        ruleGuide: "Posisi setelah kata kerja ('helps') harus diisi oleh Object Pronoun (penerima aksi), bukan Subject Pronoun atau kata kepemilikan.",
+        successExplanation: "Benar! Setelah kata kerja 'helps', bentuk objek dari 'I' adalah 'me'."
+      },
+      {
+        id: 12, chapter: 12, type: "pg",
+        question: "A: 'Do you know Mr. Andi?' B: 'Yes, I know ______.'",
+        options: { A: "he", B: "him", C: "his", D: "her" },
+        correct: ["B"],
+        optionHints: {
+          A: "'he' adalah Subject Pronoun yang hanya dipakai di depan kata kerja, bukan setelah 'know'.",
+          C: "'his' adalah Possessive Adjective (miliknya) yang memerlukan kata benda setelahnya.",
+          D: "'her' adalah Object Pronoun untuk perempuan, sedangkan 'Mr. Andi' adalah laki-laki."
+        },
+        ruleGuide: "Cari Object Pronoun (setelah kata kerja 'know') yang merujuk pada satu orang laki-laki ('Mr. Andi').",
+        successExplanation: "Tepat! 'Mr. Andi' adalah laki-laki dan posisinya sebagai objek, maka gunakan 'him'."
+      },
+      {
+        id: 13, chapter: 12, type: "pg",
+        question: "Where are your classmates? I'm waiting for ______ near the entrance.",
+        options: { A: "they", B: "their", C: "us", D: "them" },
+        correct: ["D"],
+        optionHints: {
+          A: "'they' adalah Subject Pronoun (pelaku), tidak boleh dipakai setelah preposisi 'for'.",
+          B: "'their' adalah kata kepemilikan (milik mereka), tidak bisa berdiri sendiri setelah 'for'.",
+          C: "'us' berarti 'kami/kita' (melibatkan pembicara), padahal yang ditanyakan adalah 'your classmates' (mereka)."
+        },
+        ruleGuide: "Setelah preposisi ('for'), gunakan Object Pronoun. Karena 'your classmates' adalah orang ketiga jamak (mereka), ubah 'they' ke bentuk objeknya.",
+        successExplanation: "Benar! 'your classmates' adalah jamak (mereka), dan setelah preposisi 'for' kita memakai 'them'."
+      },
+      {
+        id: 14, chapter: 12, type: "pg",
+        question: "The cake looks delicious! Let's try ______.",
+        options: { A: "them", B: "him", C: "it", D: "its" },
+        correct: ["C"],
+        optionHints: {
+          A: "'them' dipakai untuk benda atau orang yang jamak (lebih dari satu), sedangkan 'The cake' hanya satu kue.",
+          B: "'him' digunakan untuk manusia (laki-laki), bukan untuk benda/makanan.",
+          D: "'its' adalah kata kepemilikan (miliknya), bukan Object Pronoun."
+        },
+        ruleGuide: "Perhatikan bahwa 'The cake' adalah SATU benda tunggal. Pilih Object Pronoun khusus untuk satu benda.",
+        successExplanation: "Tepat! Untuk menggantikan satu benda ('The cake') sebagai objek, kita memakai 'it'."
+      },
+      {
+        id: 15, chapter: 12, type: "pg",
+        question: "Chef: 'Please wash the vegetables and give ______ to the cook.'",
+        options: { A: "it", B: "they", C: "them", D: "him" },
+        correct: ["C"],
+        optionHints: {
+          A: "'it' hanya untuk satu benda tunggal, sedangkan 'the vegetables' berbentuk jamak (ada akhiran -s).",
+          B: "'they' adalah Subject Pronoun, tidak boleh diletakkan setelah kata kerja 'give'.",
+          D: "'him' merujuk pada orang laki-laki, padahal yang dicuci dan diberikan adalah 'the vegetables' (sayuran)."
+        },
+        ruleGuide: "'the vegetables' adalah benda jamak yang menerima aksi setelah kata kerja 'give'. Gunakan Object Pronoun untuk bentuk jamak.",
+        successExplanation: "Benar! 'the vegetables' berbentuk jamak, sehingga digantikan oleh Object Pronoun 'them'."
+      },
+      {
+        id: 16, chapter: 12, type: "pg",
+        question: "My friend and I are ready. Please wait for ______.",
+        options: { A: "we", B: "us", C: "them", D: "our" },
+        correct: ["B"],
+        optionHints: {
+          A: "'we' adalah Subject Pronoun, tidak boleh digunakan setelah preposisi 'for'.",
+          C: "'them' merujuk pada orang lain (mereka), padahal 'My friend and I' melibatkan diri pembicara sendiri (kami).",
+          D: "'our' adalah Possessive Adjective (milik kami), bukan Object Pronoun."
+        },
+        ruleGuide: "'My friend and I' setara dengan 'we' (kami). Setelah preposisi 'for', ubah 'we' menjadi bentuk Object Pronoun-nya.",
+        successExplanation: "Tepat! Bentuk Object Pronoun dari 'My friend and I' (we) adalah 'us'."
+      },
+      {
+        id: 17, chapter: 12, type: "pg",
+        question: "Choose the sentence that uses BOTH a subject pronoun and an object pronoun correctly.",
+        options: {
+          A: "Her helps me every day.",
+          B: "She helps I every day.",
+          C: "She helps me every day.",
+          D: "Me help her every day."
+        },
+        correct: ["C"],
+        optionHints: {
+          A: "Posisi di depan kata kerja ('helps') adalah pelaku, jadi tidak boleh memakai Object Pronoun ('Her').",
+          B: "Posisi setelah kata kerja ('helps') adalah penerima aksi, jadi tidak boleh memakai Subject Pronoun ('I').",
+          D: "Posisi di depan kata kerja harus memakai Subject Pronoun, bukan Object Pronoun ('Me')."
+        },
+        ruleGuide: "Ingat rumus dasar Chapter 12: Subject Pronoun (pelaku) di DEPAN kata kerja, Object Pronoun (penerima) di BELAKANG kata kerja.",
+        successExplanation: "Sempurna! 'She' (Subject Pronoun) di depan kata kerja 'helps', dan 'me' (Object Pronoun) di belakangnya."
+      },
+      {
+        id: 18, chapter: 12, type: "pgk",
+        question: "Select ALL sentences that use object pronouns correctly after prepositions.",
+        options: {
+          A: "Please talk to me.",
+          B: "I work with she.",
+          C: "He is waiting for us.",
+          D: "She is talking to them."
+        },
+        correct: ["A", "C", "D"],
+        wrongHints: {
+          B: "Ada kalimat yang meletakkan Subject Pronoun ('she') setelah preposisi ('with'), padahal seharusnya memakai Object Pronoun."
+        },
+        ruleGuide: "Setelah preposisi (to, with, for), wajib menggunakan Object Pronoun (me, you, him, her, it, us, them), bukan Subject Pronoun.",
+        successExplanation: "Benar! 'to me', 'for us', dan 'to them' semuanya memakai Object Pronoun dengan tepat."
+      },
+      {
+        id: 19, chapter: 12, type: "pgk",
+        question: "Select ALL pairs where the Subject Pronoun matches its Object Pronoun correctly.",
+        options: {
+          A: "He → him",
+          B: "We → our",
+          C: "They → them",
+          D: "She → her"
+        },
+        correct: ["A", "C", "D"],
+        wrongHints: {
+          B: "Pasangan 'We → our' keliru karena 'our' adalah Possessive Adjective (kepemilikan), bukan Object Pronoun."
+        },
+        ruleGuide: "Ingat tabel 7 Object Pronouns: I→me, you→you, he→him, she→her, it→it, we→us, they→them. Jangan tertukar dengan kata kepemilikan (my/our/their).",
+        successExplanation: "Tepat! Pasangan yang benar adalah He→him, They→them, dan She→her."
+      },
+      {
+        id: 20, chapter: 12, type: "pgk",
+        question: "In a hotel or kitchen, select ALL responses that properly replace the underlined noun with an object pronoun.",
+        options: {
+          A: "'Call Rina.' → 'I'll call her.'",
+          B: "'Bring the menu.' → 'I'll bring them.'",
+          C: "'Check the order.' → 'I'll check it.'",
+          D: "'Help the guests.' → 'I'll help them.'"
+        },
+        correct: ["A", "C", "D"],
+        wrongHints: {
+          B: "'the menu' hanya satu benda (tunggal), sehingga tidak cocok digantikan oleh kata ganti jamak ('them')."
+        },
+        ruleGuide: "Periksa kecocokan jumlah (tunggal vs jamak) dan jenisnya (orang vs benda): satu benda pakai 'it', lebih dari satu pakai 'them', perempuan pakai 'her'.",
+        successExplanation: "Bagus! 'Rina'→her, 'the order' (tunggal)→it, dan 'the guests' (jamak)→them semuanya tepat."
+      },
+
+      // ==================== CHAPTER 13 (Q21–Q30) ====================
+      {
+        id: 21, chapter: 13, type: "pg",
+        question: "How do you say 08:15 in traditional English time format?",
+        options: {
+          A: "Quarter to eight",
+          B: "Quarter past eight",
+          C: "Half past eight",
+          D: "Fifteen to nine"
+        },
+        correct: ["B"],
+        optionHints: {
+          A: "'to' berarti kurang/menuju jam tersebut (07:45), padahal 08:15 berarti lewat 15 menit dari jam 8.",
+          C: "'Half past' berarti lewat 30 menit (setengah jam), sedangkan ini hanya lewat 15 menit.",
+          D: "08:15 bukan kurang 15 menit menuju jam 9 (itu 08:45)."
+        },
+        ruleGuide: "Untuk menit setelah jam (01–30), gunakan 'past'. Ingat: 15 menit = 'quarter', 30 menit = 'half'.",
+        successExplanation: "Benar! 08:15 adalah 15 menit (quarter) lewat (past) jam delapan: 'Quarter past eight'."
+      },
+      {
+        id: 22, chapter: 13, type: "pg",
+        question: "How do you say 07:45 in traditional English time format?",
+        options: {
+          A: "Quarter past seven",
+          B: "Half past seven",
+          C: "Quarter to eight",
+          D: "Fifteen past seven"
+        },
+        correct: ["C"],
+        optionHints: {
+          A: "'Quarter past seven' artinya jam 7 lewat 15 menit (07:15), bukan 07:45.",
+          B: "'Half past seven' artinya jam 7 lewat 30 menit (07:30).",
+          D: "'Fifteen past seven' artinya 07:15, bukan 07:45."
+        },
+        ruleGuide: "Untuk menit 31–59, hitung sisa menit MENUJU ('to') jam berikutnya. 07:45 berarti kurang 15 menit (quarter) menuju jam berikutnya.",
+        successExplanation: "Tepat! 07:45 berarti 15 menit menuju jam 8, yaitu 'Quarter to eight'."
+      },
+      {
+        id: 23, chapter: 13, type: "pg",
+        question: "The hotel staff briefing starts ______ 07:00.",
+        options: { A: "in", B: "on", C: "at", D: "to" },
+        correct: ["C"],
+        optionHints: {
+          A: "'in' digunakan untuk periode waktu yang lebih panjang (bulan, tahun, pagi/sore), bukan jam tepat.",
+          B: "'on' digunakan untuk hari dan tanggal spesifik, bukan jam.",
+          D: "'to' tidak digunakan sebagai preposisi untuk menyatakan jam mulai acara."
+        },
+        ruleGuide: "Ingat trik memori Chapter 13: EXACT TIME (jam tepat) menggunakan preposisi khusus yang berbeda dari 'on' (hari/tanggal) dan 'in' (bulan/tahun).",
+        successExplanation: "Benar! Jam spesifik ('07:00') selalu menggunakan preposisi 'at'."
+      },
+      {
+        id: 24, chapter: 13, type: "pg",
+        question: "We have a special meeting ______ Friday morning.",
+        options: { A: "in", B: "on", C: "at", D: "by" },
+        correct: ["B"],
+        optionHints: {
+          A: "Meskipun 'the morning' saja memakai 'in', jika digabung dengan NAMA HARI spesifik ('Friday morning'), aturannya mengikuti nama hari.",
+          C: "'at' hanya digunakan untuk jam tepat (seperti at 8:00), bukan untuk nama hari.",
+          D: "'by' berarti 'paling lambat/sebelum', bukan preposisi standar untuk jadwal pada hari tertentu."
+        },
+        ruleGuide: "Jika ada NAMA HARI + bagian hari (seperti Monday morning / Friday evening), gunakan preposisi yang sama dengan nama hari.",
+        successExplanation: "Tepat! 'Friday morning' menyebutkan hari spesifik, sehingga menggunakan 'on'."
+      },
+      {
+        id: 25, chapter: 13, type: "pg",
+        question: "The training course starts ______ September, and the exam is ______ September 20.",
+        options: { A: "on / in", B: "at / on", C: "in / on", D: "in / at" },
+        correct: ["C"],
+        optionHints: {
+          A: "Terbalik! Nama bulan saja tanpa tanggal tidak memakai 'on', dan tanggal spesifik tidak memakai 'in'.",
+          B: "'at' tidak dipakai untuk nama bulan ('September').",
+          D: "'at' dipakai untuk jam tepat, bukan untuk tanggal lengkap ('September 20')."
+        },
+        ruleGuide: "Bedakan: Bulan saja (periode panjang) memakai satu preposisi, sedangkan Tanggal lengkap (bulan + angka tanggal) memakai preposisi untuk hari/tanggal.",
+        successExplanation: "Benar! Bulan saja memakai 'in September', sedangkan tanggal spesifik memakai 'on September 20'."
+      },
+      {
+        id: 26, chapter: 13, type: "pg",
+        question: "Which ordinal number is written correctly for the date 21st?",
+        options: { A: "twenty-one", B: "twenty-first", C: "twenty-oneth", D: "twentieth-first" },
+        correct: ["B"],
+        optionHints: {
+          A: "'twenty-one' adalah Cardinal Number (angka biasa), bukan Ordinal Number (angka urutan untuk tanggal).",
+          C: "Tidak ada bentuk '-oneth' dalam bahasa Inggris; angka 1 dalam ordinal berubah menjadi bentuk tidak beraturan.",
+          D: "Pada angka puluhan seperti 21, hanya angka terakhirnya saja yang diubah ke bentuk ordinal, bukan keduanya."
+        },
+        ruleGuide: "Untuk tanggal (ordinal number) di atas 20, biarkan puluhannya tetap ('twenty-'), dan ubah satuannya (1) menjadi bentuk urutan ('first').",
+        successExplanation: "Tepat! 21st ditulis dan dibaca 'twenty-first'."
+      },
+      {
+        id: 27, chapter: 13, type: "pg",
+        question: "Supervisor: 'Are you available tomorrow at 10:00?' You are busy at 10:00. Choose the most polite way to decline and suggest another time.",
+        options: {
+          A: "No! I am busy.",
+          B: "I can't. Go away.",
+          C: "I'm sorry, I'm not available then. How about 2:00?",
+          D: "Tomorrow is bad. At 2:00."
+        },
+        correct: ["C"],
+        optionHints: {
+          A: "Jawaban ini terlalu langsung/kasar untuk lingkungan kerja dan belum menawarkan waktu alternatif.",
+          B: "Sangat tidak sopan diucapkan kepada supervisor atau rekan kerja.",
+          D: "Bahasa kurang sopan dan tidak menggunakan ungkapan penolakan serta saran jadwal yang natural."
+        },
+        ruleGuide: "Saat menolak jadwal dengan sopan di tempat kerja: awali dengan permintaan maaf ('I'm sorry...'), jelaskan ketidaktersediaan, lalu tawarkan waktu lain dengan sopan.",
+        successExplanation: "Sangat profesional! Meminta maaf dengan sopan lalu langsung menawarkan waktu alternatif ('How about 2:00?')."
+      },
+      {
+        id: 28, chapter: 13, type: "pgk",
+        question: "Select ALL time expressions that correctly use the preposition 'in'.",
+        options: {
+          A: "in 2026",
+          B: "in the evening",
+          C: "in Monday",
+          D: "in September"
+        },
+        correct: ["A", "B", "D"],
+        wrongHints: {
+          C: "'Monday' adalah nama hari dalam seminggu, sehingga TIDAK boleh menggunakan preposisi 'in'."
+        },
+        ruleGuide: "Preposisi 'in' digunakan untuk periode yang lebih panjang: bulan, tahun, musim, dan bagian hari (morning/afternoon/evening) tanpa nama hari.",
+        successExplanation: "Benar! Tahun ('in 2026'), bagian hari ('in the evening'), dan bulan ('in September') semuanya memakai 'in'."
+      },
+      {
+        id: 29, chapter: 13, type: "pgk",
+        question: "Select ALL expressions used to CONFIRM an appointment.",
+        options: {
+          A: "So, we're meeting on Monday at 10:00.",
+          B: "Just to confirm, we're meeting at 2:00 on Friday.",
+          C: "I'm sorry, I have another appointment.",
+          D: "So, the appointment is on September 20 at 9:00."
+        },
+        correct: ["A", "B", "D"],
+        wrongHints: {
+          C: "Kalimat 'I'm sorry, I have another appointment' adalah ungkapan untuk MENOLAK jadwal, bukan mengonfirmasi."
+        },
+        ruleGuide: "Cari ungkapan yang mengulang kembali hari, tanggal, dan jam yang sudah disepakati bersama (biasanya diawali 'So,...' atau 'Just to confirm,...').",
+        successExplanation: "Tepat! Ketiga kalimat tersebut digunakan untuk memastikan/mengonfirmasi ulang jadwal pertemuan."
+      },
+      {
+        id: 30, chapter: 13, type: "pgk",
+        question: "Select ALL sentences that correctly use Simple Present for fixed schedules.",
+        options: {
+          A: "The restaurant closes at 10:00 p.m.",
+          B: "The morning shift starts at 8:00.",
+          C: "The bus leaving at 6:30.",
+          D: "The class finishes at 3:00."
+        },
+        correct: ["A", "B", "D"],
+        wrongHints: {
+          C: "Kalimat dengan verb-ing tanpa 'be' ('leaving') bukan kalimat Simple Present yang benar secara grammar."
+        },
+        ruleGuide: "Untuk jadwal tetap, gunakan Simple Present: Subject tunggal + verb + s/es (seperti starts, finishes, closes, leaves).",
+        successExplanation: "Bagus! 'closes', 'starts', dan 'finishes' semuanya memakai Simple Present yang tepat untuk jadwal tetap."
+      },
+
+      // ==================== CHAPTER 14 (Q31–Q40) ====================
+      {
+        id: 31, chapter: 14, type: "pg",
+        question: "Choose the grammatically correct suggestion using 'Let's'.",
+        options: {
+          A: "Let's to go to the café.",
+          B: "Let's going to the café.",
+          C: "Let's go to the café.",
+          D: "Let's goes to the café."
+        },
+        correct: ["C"],
+        optionHints: {
+          A: "Setelah 'Let's', JANGAN menambahkan kata 'to' sebelum kata kerjanya.",
+          B: "Setelah 'Let's', JANGAN mengubah kata kerja menjadi bentuk '-ing'.",
+          D: "Setelah 'Let's', kata kerja tidak boleh ditambah akhiran '-s/-es'."
+        },
+        ruleGuide: "Pola wajib di Chapter 14: Let's + BASE VERB (kata kerja dasar murni, tanpa 'to', tanpa '-ing', tanpa '-s/-es').",
+        successExplanation: "Benar! 'Let's' selalu langsung diikuti kata kerja dasar: 'Let's go to the café.'"
+      },
+      {
+        id: 32, chapter: 14, type: "pg",
+        question: "Choose the grammatically correct question using 'Shall we'.",
+        options: {
+          A: "Shall we to meet at 3:00?",
+          B: "Shall we meeting at 3:00?",
+          C: "Shall we meet at 3:00?",
+          D: "Shall we meets at 3:00?"
+        },
+        correct: ["C"],
+        optionHints: {
+          A: "Modal 'Shall' tidak boleh diikuti 'to' sebelum kata kerjanya.",
+          B: "Setelah 'Shall we', kata kerja tidak boleh berbentuk '-ing'.",
+          D: "Kata kerja setelah 'Shall we' tidak boleh diberi akhiran '-s'."
+        },
+        ruleGuide: "Gunakan pola: Shall we + BASE VERB? (langsung kata kerja dasar tanpa imbuhan apa pun).",
+        successExplanation: "Tepat! 'Shall we meet at 3:00?' menggunakan base verb 'meet' secara langsung."
+      },
+      {
+        id: 33, chapter: 14, type: "pg",
+        question: "A: 'What would you like to do tonight?' B: '______ watch a movie.'",
+        options: { A: "I'd like to", B: "I'd like", C: "I like to would", D: "Let's to" },
+        correct: ["A"],
+        optionHints: {
+          B: "Jika diikuti kata kerja ('watch'), jangan menghilangkan kata 'to' setelah 'I'd like'.",
+          C: "Susunan katanya terbalik; 'would' harus berada sebelum 'like to'.",
+          D: "'Let's' tidak boleh diikuti 'to', dan ini menjawab pertanyaan tentang keinginan pribadi."
+        },
+        ruleGuide: "Untuk menyatakan keinginan melakukan suatu aktivitas, gunakan pola lengkap: 'I would like to' atau bentuk singkatnya + base verb.",
+        successExplanation: "Benar! 'I'd like to watch a movie' adalah bentuk singkat yang benar dari 'I would like to watch a movie'."
+      },
+      {
+        id: 34, chapter: 14, type: "pg",
+        question: "Which sentence is a polite invitation using 'Would you like to...'?",
+        options: {
+          A: "Would you like join us?",
+          B: "Would you like joining us?",
+          C: "Would you like to join us?",
+          D: "Would you to like join us?"
+        },
+        correct: ["C"],
+        optionHints: {
+          A: "Kalimat ini lupa menuliskan kata 'to' sebelum kata kerja 'join'.",
+          B: "Pola ajakan sopan dengan 'Would you like' tidak memakai verb-ing, melainkan 'to + base verb'.",
+          D: "Posisi kata 'to' keliru; 'to' harus berada SETELAH 'like', bukan sebelumnya."
+        },
+        ruleGuide: "Pola ajakan sopan: Would you like + to + base verb?",
+        successExplanation: "Tepat! 'Would you like to join us?' mengikuti pola ajakan sopan dengan sempurna."
+      },
+      {
+        id: 35, chapter: 14, type: "pg",
+        question: "Friend: 'Let's study together tonight.' You want to accept enthusiastically. What do you say?",
+        options: {
+          A: "I'm not sure about that.",
+          B: "Sounds good! That's a great idea.",
+          C: "Maybe another time.",
+          D: "I'm sorry, I can't."
+        },
+        correct: ["B"],
+        optionHints: {
+          A: "Ungkapan ini menunjukkan keraguan, bukan menerima ajakan dengan antusias.",
+          C: "Ungkapan ini adalah cara halus untuk menolak dan menunda ke lain waktu.",
+          D: "Ini adalah ungkapan untuk menolak ajakan, bukan menerimanya."
+        },
+        ruleGuide: "Perhatikan instruksi soal: kamu ingin MENERIMA ajakan dengan antusias (Accepting). Cari respons yang bernada positif dan setuju.",
+        successExplanation: "Benar! 'Sounds good! That's a great idea.' adalah respons menerima ajakan yang natural dan antusias."
+      },
+      {
+        id: 36, chapter: 14, type: "pg",
+        question: "Friend: 'Shall we go to the beach on Saturday?' You are busy on Saturday. How do you decline politely and offer an alternative?",
+        options: {
+          A: "No, I hate Saturday.",
+          B: "I'm sorry, I can't on Saturday. How about Sunday?",
+          C: "Yes, let's go on Saturday.",
+          D: "I'd love to, see you Saturday."
+        },
+        correct: ["B"],
+        optionHints: {
+          A: "Respons ini terdengar kasar dan tidak memberikan alternatif hari lain.",
+          C: "Ini justru menyetujui hari Sabtu, padahal kamu sedang sibuk di hari Sabtu.",
+          D: "Ini menerima ajakan hari Sabtu, bertentangan dengan situasi di soal."
+        },
+        ruleGuide: "Cari jawaban yang mengandung dua bagian: (1) penolakan sopan untuk hari Sabtu + (2) usulan alternatif hari lain.",
+        successExplanation: "Tepat sekali! Menolak dengan sopan ('I'm sorry, I can't on Saturday') lalu memberi alternatif ('How about Sunday?')."
+      },
+      {
+        id: 37, chapter: 14, type: "pg",
+        question: "What is the main communicative function of 'I'd like to visit the museum'?",
+        options: {
+          A: "Declining a plan",
+          B: "Expressing a personal desire",
+          C: "Confirming a past event",
+          D: "Giving an order"
+        },
+        correct: ["B"],
+        optionHints: {
+          A: "Kalimat ini bukan penolakan, melainkan menyatakan sesuatu yang ingin dilakukan.",
+          C: "Kalimat ini bukan tentang kejadian di masa lalu, melainkan rencana/keinginan.",
+          D: "Kalimat ini bukan perintah, melainkan ungkapan keinginan yang sopan."
+        },
+        ruleGuide: "Ingat trik memori Chapter 14: 'Would like to' = keinginan pribadi (My Desire); 'Would you like to' = undangan; 'Let's / Shall we' = saran bersama.",
+        successExplanation: "Benar! 'I'd like to...' berfungsi untuk menyatakan keinginan pribadi secara sopan/ramah."
+      },
+      {
+        id: 38, chapter: 14, type: "pgk",
+        question: "Select ALL grammatically correct sentences for making plans/suggestions.",
+        options: {
+          A: "Let's check the equipment after that.",
+          B: "Shall we take a break?",
+          C: "I'd like go shopping.",
+          D: "Would you like to come with us?"
+        },
+        correct: ["A", "B", "D"],
+        wrongHints: {
+          C: "Pada kalimat 'I'd like go shopping', kata 'to' hilang di antara 'I'd like' dan kata kerja 'go'."
+        },
+        ruleGuide: "Periksa tiap pola: 'Let's + V1', 'Shall we + V1?', 'I'd like + TO + V1', dan 'Would you like + TO + V1?'.",
+        successExplanation: "Mantap! Ketiga kalimat yang kamu pilih semuanya sesuai dengan pola grammar Chapter 14."
+      },
+      {
+        id: 39, chapter: 14, type: "pgk",
+        question: "Select ALL expressions used to OFFER AN ALTERNATIVE plan.",
+        options: {
+          A: "How about tomorrow?",
+          B: "Why don't we meet at 3:00?",
+          C: "We could go somewhere else.",
+          D: "Yes, let's."
+        },
+        correct: ["A", "B", "C"],
+        wrongHints: {
+          D: "'Yes, let's.' hanya menyetujui saran awal, tidak mengusulkan pilihan/rencana alternatif."
+        },
+        ruleGuide: "Cari ungkapan yang mengajukan ide, waktu, atau tempat LAIN sebagai pengganti rencana sebelumnya.",
+        successExplanation: "Benar! 'How about...?', 'Why don't we...?', dan 'We could...' semuanya digunakan untuk menawarkan alternatif."
+      },
+      {
+        id: 40, chapter: 14, type: "pgk",
+        question: "Select ALL natural ways to ACCEPT a suggestion or invitation.",
+        options: {
+          A: "Yes, I'd love to.",
+          B: "That works for me.",
+          C: "I'm sorry, I have another plan.",
+          D: "Sure, sounds good!"
+        },
+        correct: ["A", "B", "D"],
+        wrongHints: {
+          C: "'I'm sorry, I have another plan.' adalah ungkapan untuk MENOLAK secara sopan, bukan menerima."
+        },
+        ruleGuide: "Pilih semua respons yang menunjukkan persetujuan atau kesediaan mengikuti rencana/ajakan.",
+        successExplanation: "Tepat! Ketiga ungkapan tersebut adalah cara natural untuk menerima saran atau undangan."
+      },
+
+      // ==================== CHAPTER 15 (Q41–Q50) ====================
+      {
+        id: 41, chapter: 15, type: "pg",
+        question: "I prefer coffee ______ tea because coffee gives me more energy.",
+        options: { A: "than", B: "to", C: "from", D: "with" },
+        correct: ["B"],
+        optionHints: {
+          A: "Kesalahan yang sangat umum! Kata 'than' dipakai untuk 'would rather', JANGAN pernah pakai 'than' bersama 'prefer'.",
+          C: "'from' bukan kata penghubung perbandingan untuk 'prefer'.",
+          D: "'with' artinya 'dengan' (dicampur/bersama), bukan membandingkan pilihan A dibanding B."
+        },
+        ruleGuide: "Ingat rumus ketat Chapter 15: 'prefer A ___ B'. Pasangan kata penghubung untuk 'prefer' berbeda dari 'would rather ... than ...'.",
+        successExplanation: "Benar! Rumus yang benar adalah 'prefer A to B' → 'I prefer coffee to tea'."
+      },
+      {
+        id: 42, chapter: 15, type: "pg",
+        question: "I'd rather ______ at home than eat out tonight.",
+        options: { A: "eating", B: "to eat", C: "eat", D: "eats" },
+        correct: ["C"],
+        optionHints: {
+          A: "Setelah 'I'd rather', JANGAN menggunakan bentuk verb-ing.",
+          B: "Setelah 'I'd rather', JANGAN menambahkan kata 'to' sebelum kata kerjanya.",
+          D: "Setelah 'I'd rather', kata kerja tidak boleh diberi akhiran '-s'."
+        },
+        ruleGuide: "Pola Chapter 15: 'would rather' / 'I'd rather' SELALU langsung diikuti BASE VERB (kata kerja dasar murni).",
+        successExplanation: "Tepat! 'I'd rather' langsung diikuti base verb 'eat'."
+      },
+      {
+        id: 43, chapter: 15, type: "pg",
+        question: "She'd rather work in a team ______ work alone.",
+        options: { A: "to", B: "from", C: "than", D: "over" },
+        correct: ["C"],
+        optionHints: {
+          A: "'to' adalah pasangan untuk 'prefer' (prefer A to B), bukan untuk 'would rather'.",
+          B: "'from' tidak dipakai untuk membandingkan dua pilihan pada 'would rather'.",
+          D: "'over' bukan kata penghubung standar pada pola 'would rather A ___ B'."
+        },
+        ruleGuide: "Bedakan pasangannya: 'prefer A to B', sedangkan 'would rather A ___ B' menggunakan kata penghubung perbandingan lain.",
+        successExplanation: "Benar! Pasangan yang tepat untuk 'would rather' adalah 'than' → 'She'd rather work in a team than work alone.'"
+      },
+      {
+        id: 44, chapter: 15, type: "pg",
+        question: "Choose the correct sentence using 'prefer' with two activities.",
+        options: {
+          A: "I prefer cook to clean.",
+          B: "I prefer cooking than cleaning.",
+          C: "I prefer cooking to cleaning.",
+          D: "I prefer to cooking than cleaning."
+        },
+        correct: ["C"],
+        optionHints: {
+          A: "Pada pola 'prefer' untuk dua aktivitas di Chapter 15, kata kerjanya harus berbentuk verb-ing, bukan kata kerja dasar.",
+          B: "Bentuk verb-ing sudah benar, tetapi kata penghubung 'than' tidak boleh dipakai bersama 'prefer'.",
+          D: "Ada dua kesalahan di sini: 'to' tidak boleh sebelum verb-ing, dan 'than' salah dipakai untuk 'prefer'."
+        },
+        ruleGuide: "Gunakan pola Chapter 15: prefer + verb-ing + to + verb-ing. Cek bentuk '-ing' dan kata penghubungnya!",
+        successExplanation: "Sempurna! 'I prefer cooking to cleaning' memenuhi pola prefer + V-ing + to + V-ing."
+      },
+      {
+        id: 45, chapter: 15, type: "pg",
+        question: "A: 'Do you like spicy food?' Choose the most polite/soft way to express a dislike.",
+        options: {
+          A: "I hate it! It's terrible.",
+          B: "No! That's wrong.",
+          C: "Not really. I'm not a big fan of spicy food.",
+          D: "Never give me spicy food."
+        },
+        correct: ["C"],
+        optionHints: {
+          A: "Kata 'hate' dan 'terrible' terdengar terlalu keras/langsung dalam percakapan sopan.",
+          B: "'That's wrong' tidak nyambung dengan pertanyaan selera dan terdengar kasar.",
+          D: "Kalimat perintah ini terlalu keras untuk menyatakan ketidaksukaan secara sopan."
+        },
+        ruleGuide: "Untuk menyatakan ketidaksukaan secara halus (polite dislike), hindari kata keras seperti 'hate' dan gunakan ungkapan yang lebih lembut.",
+        successExplanation: "Tepat! 'Not really. I'm not a big fan of...' adalah cara yang sangat sopan dan natural."
+      },
+      {
+        id: 46, chapter: 15, type: "pg",
+        question: "Waiter: 'Would you rather ______ chicken or fish?' Guest: 'I'd rather have fish.'",
+        options: { A: "having", B: "to have", C: "have", D: "has" },
+        correct: ["C"],
+        optionHints: {
+          A: "Setelah 'Would you rather', jangan memakai bentuk verb-ing.",
+          B: "Setelah 'Would you rather', jangan menyelipkan kata 'to'.",
+          D: "Kata kerja setelah 'Would you rather' tidak boleh diubah menjadi 'has'."
+        },
+        ruleGuide: "Ingat aturan baku: 'Would you rather' selalu diikuti BASE VERB (kata kerja bentuk dasar).",
+        successExplanation: "Benar! 'Would you rather have chicken or fish?' memakai base verb 'have'."
+      },
+      {
+        id: 47, chapter: 15, type: "pg",
+        question: "Colleague: 'I prefer working alone.' Choose a polite way to disagree and state your own preference.",
+        options: {
+          A: "No! You are wrong.",
+          B: "I understand, but I'd rather work in a team.",
+          C: "Working alone is bad.",
+          D: "I hate working alone."
+        },
+        correct: ["B"],
+        optionHints: {
+          A: "Menyalahkan langsung ('You are wrong') tidak sopan karena perbedaan preferensi itu hal wajar.",
+          C: "Menilai pilihan rekan kerja sebagai 'bad' terdengar menghakimi dan tidak profesional.",
+          D: "Terlalu keras dan tidak mengakui sudut pandang lawan bicara terlebih dahulu."
+        },
+        ruleGuide: "Di Chapter 15, cara sopan berbeda pendapat adalah: hargai/akui pendapat lawan bicara dulu ('I understand...' / 'I see your point...'), lalu sampaikan pilihanmu dengan 'but'.",
+        successExplanation: "Bagus! 'I understand, but I'd rather work in a team' sangat sopan dan profesional."
+      },
+      {
+        id: 48, chapter: 15, type: "pgk",
+        question: "Select ALL grammatically correct sentences expressing likes and preferences.",
+        options: {
+          A: "I like practicing English.",
+          B: "I prefer morning shifts to evening shifts.",
+          C: "I'd rather to cook than clean.",
+          D: "I'd rather drink tea than coffee."
+        },
+        correct: ["A", "B", "D"],
+        wrongHints: {
+          C: "Ada kalimat yang menyelipkan kata 'to' setelah 'I'd rather', padahal 'would rather' harus langsung diikuti base verb."
+        },
+        ruleGuide: "Cek 3 pola: (1) like + verb-ing, (2) prefer A to B, (3) would rather + base verb (tanpa 'to') + than.",
+        successExplanation: "Benar! Ketiga kalimat yang kamu pilih semuanya akurat secara grammar."
+      },
+      {
+        id: 49, chapter: 15, type: "pgk",
+        question: "Select ALL sentences that contain a COMMON GRAMMAR MISTAKE according to Chapter 15.",
+        options: {
+          A: "I prefer coffee than tea.",
+          B: "I'd rather cooking at home.",
+          C: "I like cooking with my friends.",
+          D: "I would rather to eat noodles."
+        },
+        correct: ["A", "B", "D"],
+        wrongHints: {
+          C: "Hati-hati membaca perintah soal! Soal ini meminta kalimat yang SALAH secara grammar, sedangkan 'I like cooking...' sudah benar ('like + verb-ing')."
+        },
+        ruleGuide: "Perhatikan soalnya: cari kalimat yang MELANGGAR aturan (seperti 'prefer... than', 'would rather + V-ing', atau 'would rather + to').",
+        successExplanation: "Teliti sekali! A salah karena 'prefer... than', B salah karena 'rather + V-ing', dan D salah karena 'rather + to'."
+      },
+      {
+        id: 50, chapter: 15, type: "pgk",
+        question: "Select ALL expressions used to ASK someone about their preferences.",
+        options: {
+          A: "Which do you prefer?",
+          B: "Would you rather eat at home or eat out?",
+          C: "Do you prefer tea or coffee?",
+          D: "I'm not a big fan of coffee."
+        },
+        correct: ["A", "B", "C"],
+        wrongHints: {
+          D: "'I'm not a big fan of coffee.' adalah pernyataan ketidaksukaan diri sendiri, bukan kalimat pertanyaan untuk menanyakan preferensi orang lain."
+        },
+        ruleGuide: "Cari semua ungkapan berbentuk pertanyaan yang meminta orang lain memilih di antara opsi yang ada.",
+        successExplanation: "Tepat! Ketiga pertanyaan tersebut digunakan untuk menanyakan preferensi seseorang."
+      }
+    ];
+
+    // ==================== STATE & STORAGE ====================
+    const STORAGE_KEY = "esc_book1_ch11_15_quiz_v1";
+
+    /**
+     * progress[questionId] = {
+     *   status: 'unanswered' | 'first_try' | 'corrected' | 'wrong_pending',
+     *   attempts: number,
+     *   lastSelected: string[]
+     * }
+     */
+    let state = {
+      filter: "all",           // 'all' | 'ch11'..'ch15' | 'pg' | 'pgk' | 'missed'
+      activeIds: [],           // array of question IDs in current session
+      currentIndex: 0,         // index inside activeIds
+      currentSelection: [],    // temporary selected options ['A'] or ['A','C']
+      progress: {}             // persisted map
+    };
+
+    // Load saved progress safely
+    function loadProgress() {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && typeof parsed === "object") {
+            state.progress = parsed;
+          }
+        }
+      } catch (e) {
+        console.warn("Could not read localStorage:", e);
+        state.progress = {};
+      }
+    }
+
+    function saveProgress() {
+      try {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(state.progress));
+      } catch (e) {
+        console.warn("Could not save localStorage:", e);
+      }
+    }
+
+    function getQProgress(id) {
+      return state.progress[id] || { status: "unanswered", attempts: 0, lastSelected: [] };
+    }
+
+    // ==================== DOM REFERENCES ====================
+    const homeView = document.getElementById("homeView");
+    const quizView = document.getElementById("quizView");
+    const resultsView = document.getElementById("resultsView");
+    const drawerModal = document.getElementById("drawerModal");
+    const confirmModal = document.getElementById("confirmModal");
+
+    // Home elements
+    const homeProgressPct = document.getElementById("homeProgressPct");
+    const homeProgressBar = document.getElementById("homeProgressBar");
+    const homeStatFirst = document.getElementById("homeStatFirst");
+    const homeStatCorrected = document.getElementById("homeStatCorrected");
+    const homeStatRemaining = document.getElementById("homeStatRemaining");
+    const startQuizBtn = document.getElementById("startQuizBtn");
+    const startQuizLabel = document.getElementById("startQuizLabel");
+    const viewResultsFromHomeBtn = document.getElementById("viewResultsFromHomeBtn");
+    const resetProgressHomeBtn = document.getElementById("resetProgressHomeBtn");
+
+    // Quiz elements
+    const backHomeBtn = document.getElementById("backHomeBtn");
+    const chapterBadge = document.getElementById("chapterBadge");
+    const progressText = document.getElementById("progressText");
+    const headerSolvedCount = document.getElementById("headerSolvedCount");
+    const headerTotalCount = document.getElementById("headerTotalCount");
+    const quizProgressBar = document.getElementById("quizProgressBar");
+    const openDrawerBtn = document.getElementById("openDrawerBtn");
+    const questionCard = document.getElementById("questionCard");
+    const typeBadge = document.getElementById("typeBadge");
+    const attemptBadge = document.getElementById("attemptBadge");
+    const topicSubtitle = document.getElementById("topicSubtitle");
+    const questionText = document.getElementById("questionText");
+    const pgkHelperNote = document.getElementById("pgkHelperNote");
+    const optionsContainer = document.getElementById("optionsContainer");
+    const feedbackBox = document.getElementById("feedbackBox");
+    const prevBtn = document.getElementById("prevBtn");
+    const primaryActionBtn = document.getElementById("primaryActionBtn");
+    const nextBtn = document.getElementById("nextBtn");
+    const quizScrollArea = document.getElementById("quizScrollArea");
+
+    // Drawer elements
+    const closeDrawerBtn = document.getElementById("closeDrawerBtn");
+    const drawerGrid = document.getElementById("drawerGrid");
+    const drawerSubtitle = document.getElementById("drawerSubtitle");
+    const finishEarlyBtn = document.getElementById("finishEarlyBtn");
+
+    // Results elements
+    const resultEmoji = document.getElementById("resultEmoji");
+    const resultSubtitle = document.getElementById("resultSubtitle");
+    const resultMainScore = document.getElementById("resultMainScore");
+    const resFirstTry = document.getElementById("resFirstTry");
+    const resCorrected = document.getElementById("resCorrected");
+    const resUnfinished = document.getElementById("resUnfinished");
+    const chapterBreakdownList = document.getElementById("chapterBreakdownList");
+    const retryMissedBtn = document.getElementById("retryMissedBtn");
+    const backToMenuFromResBtn = document.getElementById("backToMenuFromResBtn");
+    const restartAllFromResBtn = document.getElementById("restartAllFromResBtn");
+
+    // Confirm modal elements
+    const cancelResetBtn = document.getElementById("cancelResetBtn");
+    const confirmResetBtn = document.getElementById("confirmResetBtn");
+
+    // ==================== FILTER & NAVIGATION ====================
+    function getFilteredQuestions(filterKey) {
+      if (filterKey === "all") return QUESTIONS;
+      if (filterKey === "ch11") return QUESTIONS.filter(q => q.chapter === 11);
+      if (filterKey === "ch12") return QUESTIONS.filter(q => q.chapter === 12);
+      if (filterKey === "ch13") return QUESTIONS.filter(q => q.chapter === 13);
+      if (filterKey === "ch14") return QUESTIONS.filter(q => q.chapter === 14);
+      if (filterKey === "ch15") return QUESTIONS.filter(q => q.chapter === 15);
+      if (filterKey === "pg") return QUESTIONS.filter(q => q.type === "pg");
+      if (filterKey === "pgk") return QUESTIONS.filter(q => q.type === "pgk");
+      if (filterKey === "missed") {
+        return QUESTIONS.filter(q => {
+          const p = getQProgress(q.id);
+          return p.status === "corrected" || p.status === "wrong_pending";
+        });
+      }
+      return QUESTIONS;
+    }
+
+    function showView(viewName) {
+      homeView.classList.add("hidden");
+      quizView.classList.add("hidden");
+      resultsView.classList.add("hidden");
+
+      if (viewName === "home") {
+        homeView.classList.remove("hidden");
+        renderHomeStats();
+      } else if (viewName === "quiz") {
+        quizView.classList.remove("hidden");
+      } else if (viewName === "results") {
+        resultsView.classList.remove("hidden");
+        renderResults();
+      }
+      window.scrollTo({ top: 0, behavior: "instant" });
+    }
+
+    // ==================== HOME SCREEN LOGIC ====================
+    function renderHomeStats() {
+      let firstTry = 0;
+      let corrected = 0;
+      let remaining = 0;
+
+      QUESTIONS.forEach(q => {
+        const p = getQProgress(q.id);
+        if (p.status === "first_try") firstTry++;
+        else if (p.status === "corrected") corrected++;
+        else remaining++;
+      });
+
+      const solved = firstTry + corrected;
+      const pct = Math.round((solved / QUESTIONS.length) * 100);
+
+      homeStatFirst.textContent = firstTry;
+      homeStatCorrected.textContent = corrected;
+      homeStatRemaining.textContent = remaining;
+      homeProgressPct.textContent = `${pct}% Selesai`;
+      homeProgressBar.style.width = `${pct}%`;
+
+      if (solved > 0) {
+        startQuizLabel.textContent = solved === QUESTIONS.length ? "Ulas Kembali Latihan" : "Lanjutkan Latihan";
+        viewResultsFromHomeBtn.classList.remove("hidden");
+      } else {
+        startQuizLabel.textContent = "Mulai Latihan";
+        viewResultsFromHomeBtn.classList.add("hidden");
+      }
+    }
+
+    // Filter button clicks
+    document.querySelectorAll(".filter-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        state.filter = btn.dataset.filter;
+        document.querySelectorAll(".filter-btn").forEach(b => {
+          b.classList.remove("border-indigo-600", "bg-indigo-50/70");
+          b.classList.add("border-slate-200", "bg-white");
+        });
+        btn.classList.remove("border-slate-200", "bg-white");
+        btn.classList.add("border-indigo-600", "bg-indigo-50/70");
+      });
+    });
+
+    function startSession(filterKey) {
+      const list = getFilteredQuestions(filterKey);
+      if (list.length === 0) return;
+
+      state.filter = filterKey;
+      state.activeIds = list.map(q => q.id);
+
+      // Jump to first unanswered/pending question if available
+      const firstUnfinishedIdx = state.activeIds.findIndex(id => {
+        const st = getQProgress(id).status;
+        return st === "unanswered" || st === "wrong_pending";
+      });
+      state.currentIndex = firstUnfinishedIdx >= 0 ? firstUnfinishedIdx : 0;
+
+      showView("quiz");
+      renderCurrentQuestion();
+    }
+
+    startQuizBtn.addEventListener("click", () => startSession(state.filter));
+    viewResultsFromHomeBtn.addEventListener("click", () => showView("results"));
+    backHomeBtn.addEventListener("click", () => showView("home"));
+
+    // ==================== QUIZ RENDERING ====================
+    function getCurrentQuestion() {
+      const id = state.activeIds[state.currentIndex];
+      return QUESTIONS.find(q => q.id === id);
+    }
+
+    function renderCurrentQuestion() {
+      const q = getCurrentQuestion();
+      const prog = getQProgress(q.id);
+      const isSolved = prog.status === "first_try" || prog.status === "corrected";
+
+      // Reset selection to saved answer if solved, else empty (or keep last wrong selection cleared for fresh retry)
+      if (isSolved) {
+        state.currentSelection = [...q.correct];
+      } else {
+        state.currentSelection = [];
+      }
+
+      // Header updates
+      const chInfo = CHAPTER_META[q.chapter];
+      chapterBadge.textContent = `${chInfo.title}`;
+      progressText.textContent = `Soal ${state.currentIndex + 1} / ${state.activeIds.length}`;
+
+      const solvedInSet = state.activeIds.filter(id => {
+        const st = getQProgress(id).status;
+        return st === "first_try" || st === "corrected";
+      }).length;
+
+      headerSolvedCount.textContent = solvedInSet;
+      headerTotalCount.textContent = state.activeIds.length;
+      quizProgressBar.style.width = `${Math.round(((state.currentIndex + 1) / state.activeIds.length) * 100)}%`;
+
+      // Question Card updates
+      topicSubtitle.textContent = chInfo.topic;
+      questionText.textContent = q.question;
+      attemptBadge.textContent = `Soal #${q.id}` + (prog.attempts > 0 ? ` • ${prog.attempts}x cek` : "");
+
+      if (q.type === "pg") {
+        typeBadge.textContent = "Pilihan Ganda";
+        typeBadge.className = "inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700";
+        pgkHelperNote.classList.add("hidden");
+      } else {
+        typeBadge.textContent = "Pilihan Ganda Kompleks • Pilih >1";
+        typeBadge.className = "inline-flex items-center gap-1 px-3 py-1 rounded-full text-xs font-bold bg-violet-100 text-violet-800";
+        pgkHelperNote.classList.remove("hidden");
+      }
+
+      // Re-trigger subtle entrance animation
+      questionCard.classList.remove("animate-fade-up");
+      void questionCard.offsetWidth;
+      questionCard.classList.add("animate-fade-up");
+
+      // Render Options
+      renderOptions(q, isSolved);
+
+      // Render Feedback if already solved, else hide
+      if (isSolved) {
+        showCorrectFeedback(q, prog);
+      } else {
+        feedbackBox.classList.add("hidden");
+        feedbackBox.innerHTML = "";
+      }
+
+      // Update Bottom Navigation Bar
+      updateBottomBar(isSolved, prog);
+      quizScrollArea.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function renderOptions(q, isSolved) {
+      optionsContainer.innerHTML = "";
+      const keys = ["A", "B", "C", "D"];
+
+      keys.forEach(letter => {
+        const isSelected = state.currentSelection.includes(letter);
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.dataset.letter = letter;
+        btn.disabled = isSolved;
+
+        // Styling states
+        let cardClass = "w-full min-h-[56px] text-left p-3.5 rounded-2xl border-2 transition-all flex items-center gap-3.5 ";
+        let badgeClass = "w-8 h-8 rounded-xl flex items-center justify-center font-extrabold text-sm shrink-0 transition-all ";
+        let indicatorHTML = "";
+
+        if (isSolved && isSelected) {
+          cardClass += "border-emerald-500 bg-emerald-50/90 text-emerald-950 shadow-sm";
+          badgeClass += "bg-emerald-600 text-white";
+          indicatorHTML = `<span class="ml-auto text-emerald-600 font-bold text-lg shrink-0">✓</span>`;
+        } else if (isSolved && !isSelected) {
+          cardClass += "border-slate-200/70 bg-white/60 text-slate-400 opacity-70";
+          badgeClass += "bg-slate-100 text-slate-400";
+        } else if (isSelected) {
+          cardClass += q.type === "pgk"
+            ? "border-violet-600 bg-violet-50/80 text-violet-950 shadow-sm active:scale-[0.99]"
+            : "border-indigo-600 bg-indigo-50/80 text-indigo-950 shadow-sm active:scale-[0.99]";
+          badgeClass += q.type === "pgk" ? "bg-violet-600 text-white" : "bg-indigo-600 text-white";
+          indicatorHTML = q.type === "pgk"
+            ? `<span class="ml-auto w-5 h-5 rounded-md bg-violet-600 text-white flex items-center justify-center text-xs font-bold shrink-0">✓</span>`
+            : `<span class="ml-auto w-5 h-5 rounded-full border-[5px] border-indigo-600 bg-white shrink-0"></span>`;
+        } else {
+          cardClass += "border-slate-200 bg-white hover:border-slate-300 text-slate-800 active:scale-[0.99]";
+          badgeClass += "bg-slate-100 text-slate-600";
+          indicatorHTML = q.type === "pgk"
+            ? `<span class="ml-auto w-5 h-5 rounded-md border-2 border-slate-300 bg-white shrink-0"></span>`
+            : `<span class="ml-auto w-5 h-5 rounded-full border-2 border-slate-300 bg-white shrink-0"></span>`;
+        }
+
+        btn.className = cardClass;
+        btn.innerHTML = `
+          <span class="${badgeClass}">${letter}</span>
+          <span class="text-[15px] font-medium leading-snug flex-1">${q.options[letter]}</span>
+          ${indicatorHTML}
+        `;
+
+        if (!isSolved) {
+          btn.addEventListener("click", () => handleOptionSelect(q, letter));
+        }
+
+        optionsContainer.appendChild(btn);
+      });
+    }
+
+    function handleOptionSelect(q, letter) {
+      if (q.type === "pg") {
+        state.currentSelection = [letter];
+      } else {
+        if (state.currentSelection.includes(letter)) {
+          state.currentSelection = state.currentSelection.filter(l => l !== letter);
+        } else {
+          state.currentSelection = [...state.currentSelection, letter].sort();
+        }
+      }
+      renderOptions(q, false);
+      const prog = getQProgress(q.id);
+      updateBottomBar(false, prog);
+    }
+
+    function updateBottomBar(isSolved, prog) {
+      prevBtn.disabled = state.currentIndex === 0;
+      const isLast = state.currentIndex === state.activeIds.length - 1;
+      nextBtn.disabled = false;
+
+      if (isSolved) {
+        primaryActionBtn.disabled = false;
+        primaryActionBtn.className = "flex-1 h-12 rounded-2xl bg-emerald-600 hover:bg-emerald-700 active:scale-[0.98] text-white font-bold text-sm shadow-md shadow-emerald-200/70 transition flex items-center justify-center gap-2";
+        primaryActionBtn.innerHTML = isLast
+          ? `Lihat Hasil &amp; Evaluasi <span>🏆</span>`
+          : `Soal Berikutnya <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6"/></svg>`;
+      } else {
+        const hasSelection = state.currentSelection.length > 0;
+        primaryActionBtn.disabled = !hasSelection;
+        primaryActionBtn.className = "flex-1 h-12 rounded-2xl bg-indigo-600 hover:bg-indigo-700 active:scale-[0.98] disabled:bg-slate-300 disabled:text-slate-500 disabled:shadow-none text-white font-bold text-sm shadow-md shadow-indigo-200/70 transition flex items-center justify-center gap-2";
+        primaryActionBtn.innerHTML = prog.attempts > 0 ? "Coba Periksa Lagi" : "Periksa Jawaban";
+      }
+    }
+
+    // ==================== SMART AUTO-CORRECTION ENGINE (ZERO SPOILERS) ====================
+    function arraysEqual(a, b) {
+      if (a.length !== b.length) return false;
+      const sa = [...a].sort();
+      const sb = [...b].sort();
+      return sa.every((val, idx) => val === sb[idx]);
+    }
+
+    function handlePrimaryAction() {
+      const q = getCurrentQuestion();
+      const prog = getQProgress(q.id);
+      const isSolved = prog.status === "first_try" || prog.status === "corrected";
+
+      if (isSolved) {
+        // Go to next question or results
+        if (state.currentIndex < state.activeIds.length - 1) {
+          state.currentIndex++;
+          renderCurrentQuestion();
+        } else {
+          showView("results");
+        }
+        return;
+      }
+
+      if (state.currentSelection.length === 0) return;
+
+      // Evaluate user's answer
+      const newAttempts = prog.attempts + 1;
+      const isCorrect = arraysEqual(state.currentSelection, q.correct);
+
+      if (isCorrect) {
+        const newStatus = newAttempts === 1 ? "first_try" : "corrected";
+        state.progress[q.id] = {
+          status: newStatus,
+          attempts: newAttempts,
+          lastSelected: [...state.currentSelection]
+        };
+        saveProgress();
+
+        // Update UI to solved state
+        attemptBadge.textContent = `Soal #${q.id} • ${newAttempts}x cek`;
+        const solvedInSet = state.activeIds.filter(id => {
+          const st = getQProgress(id).status;
+          return st === "first_try" || st === "corrected";
+        }).length;
+        headerSolvedCount.textContent = solvedInSet;
+
+        renderOptions(q, true);
+        showCorrectFeedback(q, state.progress[q.id]);
+        updateBottomBar(true, state.progress[q.id]);
+      } else {
+        // WRONG: Save attempt and show Smart Auto-Correction WITHOUT revealing correct answer!
+        state.progress[q.id] = {
+          status: "wrong_pending",
+          attempts: newAttempts,
+          lastSelected: [...state.currentSelection]
+        };
+        saveProgress();
+
+        attemptBadge.textContent = `Soal #${q.id} • ${newAttempts}x cek`;
+        showAutoCorrectionFeedback(q, state.currentSelection);
+        updateBottomBar(false, state.progress[q.id]);
+
+        // Gentle shake on feedback box & scroll into view
+        feedbackBox.classList.remove("animate-shake");
+        void feedbackBox.offsetWidth;
+        feedbackBox.classList.add("animate-shake");
+      }
+
+      // Smooth scroll to feedback
+      setTimeout(() => {
+        feedbackBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
+      }, 60);
+    }
+
+    function showCorrectFeedback(q, prog) {
+      feedbackBox.classList.remove("hidden", "border-amber-300", "bg-amber-50/90", "border-rose-300", "bg-rose-50/90");
+      feedbackBox.classList.add("border-emerald-300", "bg-emerald-50/90");
+
+      const badgeText = prog.status === "first_try"
+        ? "Benar pada percobaan pertama! 🎉"
+        : `Berhasil dikoreksi pada percobaan ke-${prog.attempts}! 👏`;
+
+      feedbackBox.innerHTML = `
+        <div class="flex items-start gap-3">
+          <div class="w-9 h-9 rounded-xl bg-emerald-500 text-white flex items-center justify-center font-bold text-lg shrink-0">✓</div>
+          <div class="flex-1 min-w-0">
+            <div class="font-extrabold text-sm text-emerald-900">${badgeText}</div>
+            <p class="text-xs text-emerald-800/90 mt-1 leading-relaxed">${q.successExplanation}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function showAutoCorrectionFeedback(q, selected) {
+      feedbackBox.classList.remove("hidden", "border-emerald-300", "bg-emerald-50/90");
+      feedbackBox.classList.add("border-amber-300", "bg-amber-50/95");
+
+      let diagnosisHTML = "";
+
+      if (q.type === "pg") {
+        // Single choice: pinpoint the exact grammar flaw of the chosen option without revealing the answer
+        const chosen = selected[0];
+        const flaw = q.optionHints[chosen] || "Pilihan ini belum sesuai dengan aturan grammar atau konteks kalimat.";
+        diagnosisHTML = `<p class="text-xs text-rose-900 leading-relaxed">${flaw}</p>`;
+      } else {
+        // Multi-select (PGK): diagnose wrong checked items AND/OR missing correct items without leaking letters
+        const wrongChosen = selected.filter(l => !q.correct.includes(l));
+        const missedCount = q.correct.filter(l => !selected.includes(l)).length;
+        const points = [];
+
+        if (wrongChosen.length > 0) {
+          wrongChosen.forEach(letter => {
+            if (q.wrongHints && q.wrongHints[letter]) {
+              points.push(q.wrongHints[letter]);
+            }
+          });
+          if (points.length === 0) {
+            points.push(`Ada ${wrongChosen.length} pilihan yang kamu centang belum memenuhi syarat soal.`);
+          }
+        }
+
+        if (missedCount > 0) {
+          points.push(`Masih ada <strong>${missedCount} pilihan benar</strong> yang belum kamu pilih.`);
+        }
+
+        diagnosisHTML = `<ul class="list-disc pl-4 space-y-1 text-xs text-rose-900 leading-relaxed">${points.map(pt => `<li>${pt}</li>`).join("")}</ul>`;
+      }
+
+      feedbackBox.innerHTML = `
+        <div class="flex items-center gap-2 mb-2.5">
+          <span class="w-7 h-7 rounded-xl bg-amber-500 text-white flex items-center justify-center text-sm font-bold shrink-0">💡</span>
+          <div>
+            <div class="font-extrabold text-sm text-amber-950">Auto-Koreksi &amp; Petunjuk</div>
+            <div class="text-[11px] font-medium text-amber-800/80">Jawaban belum tepat — coba perbaiki pilihanmu!</div>
+          </div>
+        </div>
+
+        <div class="bg-rose-50/90 border border-rose-200/80 rounded-2xl p-3 mb-2.5">
+          <div class="text-[11px] font-extrabold uppercase tracking-wide text-rose-700 mb-1">❌ Di mana letak salahnya:</div>
+          ${diagnosisHTML}
+        </div>
+
+        <div class="bg-white/90 border border-amber-200/80 rounded-2xl p-3">
+          <div class="text-[11px] font-extrabold uppercase tracking-wide text-amber-700 mb-1">🧭 Bagaimana seharusnya:</div>
+          <p class="text-xs text-slate-700 leading-relaxed">${q.ruleGuide}</p>
+        </div>
+      `;
+    }
+
+    // Bottom Nav Events
+    primaryActionBtn.addEventListener("click", handlePrimaryAction);
+
+    prevBtn.addEventListener("click", () => {
+      if (state.currentIndex > 0) {
+        state.currentIndex--;
+        renderCurrentQuestion();
+      }
+    });
+
+    nextBtn.addEventListener("click", () => {
+      if (state.currentIndex < state.activeIds.length - 1) {
+        state.currentIndex++;
+        renderCurrentQuestion();
+      } else {
+        showView("results");
+      }
+    });
+
+    // ==================== QUESTION GRID DRAWER ====================
+    function openDrawer() {
+      drawerSubtitle.textContent = `Menampilkan ${state.activeIds.length} soal pada mode aktif`;
+      drawerGrid.innerHTML = "";
+
+      state.activeIds.forEach((id, idx) => {
+        const p = getQProgress(id);
+        const isCurrent = idx === state.currentIndex;
+
+        const btn = document.createElement("button");
+        btn.type = "button";
+
+        let cls = "h-11 rounded-2xl font-bold text-sm flex items-center justify-center transition active:scale-95 relative ";
+        if (p.status === "first_try") {
+          cls += "bg-emerald-500 text-white shadow-xs";
+        } else if (p.status === "corrected") {
+          cls += "bg-sky-500 text-white shadow-xs";
+        } else if (p.status === "wrong_pending") {
+          cls += "bg-amber-100 text-amber-800 border-2 border-amber-400";
+        } else {
+          cls += "bg-slate-100 text-slate-600 hover:bg-slate-200";
+        }
+
+        if (isCurrent) {
+          cls += " ring-2 ring-offset-2 ring-indigo-600";
+        }
+
+        btn.className = cls;
+        btn.textContent = id;
+        btn.addEventListener("click", () => {
+          state.currentIndex = idx;
+          closeDrawer();
+          renderCurrentQuestion();
+        });
+
+        drawerGrid.appendChild(btn);
+      });
+
+      drawerModal.classList.remove("hidden");
+    }
+
+    function closeDrawer() {
+      drawerModal.classList.add("hidden");
+    }
+
+    openDrawerBtn.addEventListener("click", openDrawer);
+    closeDrawerBtn.addEventListener("click", closeDrawer);
+    drawerModal.addEventListener("click", e => {
+      if (e.target === drawerModal) closeDrawer();
+    });
+    finishEarlyBtn.addEventListener("click", () => {
+      closeDrawer();
+      showView("results");
+    });
+
+    // ==================== RESULTS & EVALUATION SCREEN ====================
+    function renderResults() {
+      let firstTry = 0;
+      let corrected = 0;
+      let unfinished = 0;
+
+      QUESTIONS.forEach(q => {
+        const p = getQProgress(q.id);
+        if (p.status === "first_try") firstTry++;
+        else if (p.status === "corrected") corrected++;
+        else unfinished++;
+      });
+
+      const pctFirst = Math.round((firstTry / QUESTIONS.length) * 100);
+      resultMainScore.textContent = `${pctFirst}%`;
+      resFirstTry.textContent = firstTry;
+      resCorrected.textContent = corrected;
+      resUnfinished.textContent = unfinished;
+
+      if (pctFirst >= 85) {
+        resultEmoji.textContent = "🏆";
+        resultSubtitle.textContent = "Luar biasa! Penguasaan materi Ch. 11–15 sangat kuat.";
+      } else if (firstTry + corrected === QUESTIONS.length) {
+        resultEmoji.textContent = "🎉";
+        resultSubtitle.textContent = "Hebat! Semua 50 soal sudah berhasil kamu selesaikan.";
+      } else {
+        resultEmoji.textContent = "📈";
+        resultSubtitle.textContent = "Terus berlatih! Gunakan fitur koreksi untuk memahami setiap aturan.";
+      }
+
+      // Per-chapter breakdown
+      chapterBreakdownList.innerHTML = "";
+      [11, 12, 13, 14, 15].forEach(ch => {
+        const chQs = QUESTIONS.filter(q => q.chapter === ch);
+        const chFirst = chQs.filter(q => getQProgress(q.id).status === "first_try").length;
+        const chCorr = chQs.filter(q => getQProgress(q.id).status === "corrected").length;
+        const chSolved = chFirst + chCorr;
+        const pct = Math.round((chSolved / chQs.length) * 100);
+
+        const row = document.createElement("div");
+        row.innerHTML = `
+          <div class="flex items-center justify-between text-xs mb-1">
+            <span class="font-bold text-slate-700">Ch. ${ch}: ${CHAPTER_META[ch].topic.split(" (")[0]}</span>
+            <span class="font-bold text-indigo-600">${chSolved}/${chQs.length} <span class="text-slate-400 font-medium">(${chFirst}x langsung)</span></span>
+          </div>
+          <div class="w-full h-2 bg-slate-100 rounded-full overflow-hidden flex">
+            <div class="h-full bg-emerald-500 transition-all" style="width: ${(chFirst / chQs.length) * 100}%"></div>
+            <div class="h-full bg-sky-400 transition-all" style="width: ${(chCorr / chQs.length) * 100}%"></div>
+          </div>
+        `;
+        chapterBreakdownList.appendChild(row);
+      });
+
+      // Show retry button if there are questions that needed correction or are still pending
+      const missedList = getFilteredQuestions("missed");
+      if (missedList.length > 0) {
+        retryMissedBtn.classList.remove("hidden");
+        retryMissedBtn.textContent = `🔁 Ulangi ${missedList.length} Soal yang Pernah Salah`;
+      } else {
+        retryMissedBtn.classList.add("hidden");
+      }
+    }
+
+    retryMissedBtn.addEventListener("click", () => {
+      const missedList = getFilteredQuestions("missed");
+      if (missedList.length === 0) return;
+      // Reset only those missed questions so user can re-test them fresh
+      missedList.forEach(q => {
+        delete state.progress[q.id];
+      });
+      saveProgress();
+      state.activeIds = missedList.map(q => q.id);
+      state.currentIndex = 0;
+      showView("quiz");
+      renderCurrentQuestion();
+    });
+
+    backToMenuFromResBtn.addEventListener("click", () => showView("home"));
+
+    // ==================== RESET CONFIRMATION MODAL ====================
+    function openResetModal() {
+      confirmModal.classList.remove("hidden");
+    }
+    function closeResetModal() {
+      confirmModal.classList.add("hidden");
+    }
+
+    resetProgressHomeBtn.addEventListener("click", openResetModal);
+    restartAllFromResBtn.addEventListener("click", openResetModal);
+    cancelResetBtn.addEventListener("click", closeResetModal);
+    confirmModal.addEventListener("click", e => {
+      if (e.target === confirmModal) closeResetModal();
+    });
+
+    confirmResetBtn.addEventListener("click", () => {
+      state.progress = {};
+      saveProgress();
+      closeResetModal();
+      showView("home");
+    });
+
+    // ==================== INITIALIZE APP ====================
+    loadProgress();
+    showView("home");
+  </script>
+</body>
+</html>
